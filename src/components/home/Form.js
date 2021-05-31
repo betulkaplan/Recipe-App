@@ -5,7 +5,7 @@ const Form = ({ setQuery, setMeal, getData, query, meal, mealTypes }) => {
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        console.log('food form submitted', query);
+        console.log(meal, query);
         getData();
       }}
     >
@@ -13,11 +13,16 @@ const Form = ({ setQuery, setMeal, getData, query, meal, mealTypes }) => {
         type="text"
         placeholder="Search"
         onChange={(e) => setQuery(e.target.value)}
+        value={query}
       ></input>
       <button type="submit"> Search</button>
-      <select name="mealTypes" id="mealTypes">
-        {mealTypes?.map((mealType) => (
-          <option value={mealType.toLowerCase()} key>
+      <select
+        name="mealTypes"
+        id="mealTypes"
+        onChange={(e) => setMeal(e.target.value)}
+      >
+        {mealTypes?.map((mealType, index) => (
+          <option value={mealType.toLowerCase()} key={index}>
             {mealType}
           </option>
         ))}

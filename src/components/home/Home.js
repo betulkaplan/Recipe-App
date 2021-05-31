@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import Header from '../header/Header';
 import axios from 'axios';
+import RecipeCard from './recipeCard/RecipeCard';
+import { HomeRecipes } from './style';
 
 const mealTypes = ['orange', 'apple', 'chicken', 'fish', 'meat'];
 
 const Home = () => {
-  const [query, setQuery] = useState('apple');
+  const [query, setQuery] = useState('');
   const [recipes, setRecipes] = useState();
-  const [meal, setMeal] = useState();
+  const [meal, setMeal] = useState(mealTypes[0]);
 
   const ID = '2c6fceed';
   const KEY = '28f5d8623b7f7c006eded48d4c245d62	';
@@ -25,12 +27,6 @@ const Home = () => {
       alert('Please fill the form');
     }
   };
-
-  //   useEffect(() => {
-  //     getData();
-  //   });
-
-  //getData();
   return (
     <div>
       <Header
@@ -41,9 +37,11 @@ const Home = () => {
         setMeal={setMeal}
         meal={meal}
       />
-      {recipes?.map((recipe, index) => (
-        <h2 key={index}>{recipe.recipe.label}</h2>
-      ))}
+      <HomeRecipes>
+        {recipes?.map((recipe, index) => (
+          <RecipeCard key={index} title={recipe.recipe.label} />
+        ))}
+      </HomeRecipes>
     </div>
   );
 };
