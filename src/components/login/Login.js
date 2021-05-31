@@ -10,7 +10,7 @@ function Login({ auth, setAuth }) {
       <LoginForm
         onSubmit={(e) => {
           e.preventDefault();
-          setAuth(true);
+          //setAuth(true);
           his.push('/');
         }}
       >

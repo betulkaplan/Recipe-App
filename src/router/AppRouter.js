@@ -5,38 +5,31 @@ import {
   Switch,
   Redirect,
 } from 'react-router-dom';
+import About from '../components/about/About';
+import Home from '../components/home/Home';
 import Login from '../components/login/Login';
 import Navbar from '../components/navbar/Navbar';
-
-const AuthContainer = () => (
-  <div>
-    <Navbar />
-    <Route exact path="/" component={() => <p>Home</p>} />
-    <Route exact path="/details" component={() => <p>Recipe Details</p>} />
-    <Route exact path="/about" component={() => <p>About the Author</p>} />
-  </div>
-);
+import PrivateRouter from './PrivateRouter';
 
 function AppRouter() {
-  const [auth, setAuth] = useState(false);
+  const [auth, setAuth] = useState(true);
+
+  const AuthContainer = () => (
+    <div style={{ border: '1px solid gray' }}>
+      <Navbar />
+      <Switch>
+        <Route path="/" exact auth={auth} component={Home} />
+        <Route path="/about" exact auth={auth} component={About} />
+      </Switch>
+    </div>
+  );
 
   return (
     <Router>
       <p>{`${auth}`}</p>
       <Switch>
-        <Route
-          exact
-          path="/"
-          render={() => {
-            return auth ? <AuthContainer /> : <Redirect to="/login" />;
-          }}
-        />
-
-        <Route
-          path="/login"
-          exact
-          component={() => <Login auth={auth} setAuth={setAuth} />}
-        />
+        <Route path="/login" component={Login} setAuth={setAuth} />
+        <Route path="/" component={AuthContainer} />
       </Switch>
     </Router>
   );

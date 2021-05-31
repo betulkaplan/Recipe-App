@@ -1,26 +1,29 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export default styled.nav`
-  background: pink;
+  background: rgb(0, 234, 211);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
+  padding: 10px;
+  color: black;
 
   @media only screen and (max-width: 600px) {
     justify-content: center;
   }
 `;
 
-export const Logo = styled.span`
-  font-size: 30px;
+export const Logo = styled(Link)`
+  font-size: 20px;
+  cursor: pointer;
 `;
 
 export const Navigator = styled.ul`
   font-size: 15px;
 `;
 
-export const NavItem = styled.li`
-  display: inline-block;
-  margin-left: 20px;
+export const Menulink = styled(Link)`
+  margin-left: 10px;
+  //text-decoration: ${({ isOpen }) => (isOpen ? 'none' : 'line-through')};
 `;
