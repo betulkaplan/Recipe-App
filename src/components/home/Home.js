@@ -39,7 +39,7 @@ const Home = () => {
       />
       <HomeRecipes>
         {recipes?.map((recipe, index) => (
-          <RecipeCard key={index} title={recipe.recipe.label} />
+          <RecipeCard recipe={recipe} key={index} />
         ))}
       </HomeRecipes>
     </div>

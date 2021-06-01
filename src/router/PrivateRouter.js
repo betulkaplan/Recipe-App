@@ -1,8 +1,8 @@
 import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
 
-const PrivateRouter = ({ component: Component, auth }) => {
-  return <Route>hello from the inside</Route>;
+const PrivateRouter = ({ component: Component, auth, ...rest }) => {
+  return <Route {...rest} render={(props) => <Component {...props} />} />;
 };
 
 export default PrivateRouter;

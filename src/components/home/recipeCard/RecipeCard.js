@@ -1,15 +1,24 @@
 import React from 'react';
 import { MainContainer, ViewMore } from './stylesRecipeCard';
+import { useHistory } from 'react-router-dom';
 
-const RecipeCard = ({ title }) => {
+const RecipeCard = ({ recipe }) => {
+  console.log(recipe.recipe);
+  const history = useHistory();
+  const showDetails = () => {
+    history.push({
+      pathname: '/details',
+      recipe: recipe.recipe,
+    });
+  };
   return (
     <MainContainer>
-      <h4>{title}</h4>
+      <h4>{recipe?.recipe.label}</h4>
       <div className="picture">
         <img src="https://picsum.photos/200/200" alt="" />
       </div>
 
-      <ViewMore to="/detail">View More</ViewMore>
+      <button onClick={showDetails}>View More</button>
     </MainContainer>
   );
 };
