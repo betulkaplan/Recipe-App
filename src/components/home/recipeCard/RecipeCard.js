@@ -15,7 +15,7 @@ const RecipeCard = ({ recipe }) => {
     <MainContainer>
       <h4>{recipe?.recipe.label}</h4>
       <div className="picture">
-        <img src="https://picsum.photos/200/200" alt="" />
+        <img src={recipe?.recipe.image} alt="" />
       </div>
 
       <button onClick={showDetails}>View More</button>

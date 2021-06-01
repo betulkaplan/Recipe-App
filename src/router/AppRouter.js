@@ -58,7 +58,6 @@ function AppRouter() {
 
   return (
     <Router>
-      <p>{`${auth}`}</p>
       <Switch>
         <Route path="/login" render={() => <Login setAuth={setAuth} />} />
         <Route path="/" component={AuthContainer} />

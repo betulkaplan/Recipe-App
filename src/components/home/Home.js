@@ -4,7 +4,7 @@ import axios from 'axios';
 import RecipeCard from './recipeCard/RecipeCard';
 import { HomeRecipes } from './style';
 
-const mealTypes = ['orange', 'apple', 'chicken', 'fish', 'meat'];
+const mealTypes = ['Breakfast', 'Lunch', 'Dinner', 'Snack', 'Teatime'];
 
 const Home = () => {
   const [query, setQuery] = useState('');
