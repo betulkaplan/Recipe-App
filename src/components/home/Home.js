@@ -9,13 +9,16 @@ const mealTypes = ['Breakfast', 'Lunch', 'Dinner', 'Snack', 'Teatime'];
 const Home = () => {
   const [query, setQuery] = useState('');
   const [recipes, setRecipes] = useState();
-  const [meal, setMeal] = useState(mealTypes[0]);
+  const [meal, setMeal] = useState(mealTypes[0].toLowerCase());
 
   const ID = '2c6fceed';
   const KEY = '28f5d8623b7f7c006eded48d4c245d62	';
-  const url = `https://api.edamam.com/search?q=${query}&app_id=${ID}&app_key=${KEY}&from=0&to=3&calories=591-722&health=${'alcohol-free'}`;
+  const url = `https://api.edamam.com/search?q=${query}&app_id=${ID}&app_key=${KEY}&mealType=${meal}`;
 
   const getData = async () => {
+    console.log(
+      `https://api.edamam.com/search?q=${query}&app_id=${ID}&app_key=${KEY}&from=0&to=3&calories=591-722&health=${meal}`
+    );
     if (query !== '') {
       const result = await axios.get(url);
       console.log(result);
